@@ -95,30 +95,30 @@ public class TextChecker {
         int j = 0;
         for (int i = 0; i < myText.length(); i++)
         {
-//            while (!myTextHolder.equals("")) {
-                if (myText.indexOf(" ") == i || myText.indexOf(".") == i || myText.indexOf(",") == i) {
-                    tempString = myText.substring(j, i);
-                    if (compare(tempString, firstPersonPronouns))
-                        for (int k = j; k <= i; k++) {
-                            boolText[0][k] = true;
-                        }
-                    if (compare(tempString, secondPersonPronouns))
-                        for (int k = j; k <= i; k++) {
-                            boolText[1][k] = true;
-                        }
-                    if (compare(tempString, contractions))
-                        for (int k = j; k <= i; k++) {
-                            boolText[2][k] = true;
-                        }
-                    if (compare(tempString, nContractions))
-                        for (int k = j; k <= i; i++) {
-                            boolText[3][k] = true;
-                        }
-                    j = i + 1;
-//                    myTextHolder = myTextHolder.substring(j);
-                }
-//            }
+            if (myTextHolder.indexOf(" ") == i || myTextHolder.indexOf(".") == i || myTextHolder.indexOf(",") == i) {
+                tempString = myText.substring(j, i-1);
+                if (compare(tempString, firstPersonPronouns))
+                    for (int k = j; k <= i; k++) {
+                        boolText[0][k] = true;
+                    }
+                if (compare(tempString, secondPersonPronouns))
+                    for (int k = j; k <= i; k++) {
+                        boolText[1][k] = true;
+                    }
+                if (compare(tempString, contractions))
+                    for (int k = j; k <= i; k++) {
+                        boolText[2][k] = true;
+                    }
+                if (compare(tempString, nContractions))
+                    for (int k = j; k <= i; i++) {
+                        boolText[3][k] = true;
+                    }
+                j = i + 1;
+                if (j <= myText.length())
+                    myTextHolder = myTextHolder.substring(j);
+                else
+                    myTextHolder = myTextHolder.substring(i);
+            }
         }
     }
-
 }
